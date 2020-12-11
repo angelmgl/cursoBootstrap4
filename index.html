@@ -44,7 +44,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Login</h4>
-                    <button type="button" class="close" data-dismiss="modal">
+                    <button type="button" class="close" id="loginClose">
                         &times;
                     </button>
                 </div>
@@ -52,12 +52,12 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-sm-4">
-                                    <label class="sr-only" for="exampleInputEmail3">Email address</label>
-                                    <input type="email" class="form-control form-control-sm mr-1" id="exampleInputEmail3" placeholder="Enter email">
+                                    <label class="sr-only" for="InputEmail">Email address</label>
+                                    <input type="email" class="form-control form-control-sm mr-1" id="InputEmail" placeholder="Enter email">
                             </div>
                             <div class="form-group col-sm-4">
-                                <label class="sr-only" for="exampleInputPassword3">Password</label>
-                                <input type="password" class="form-control form-control-sm mr-1" id="exampleInputPassword3" placeholder="Password">
+                                <label class="sr-only" for="InputPassword">Password</label>
+                                <input type="password" class="form-control form-control-sm mr-1" id="InputPassword" placeholder="Password">
                             </div>
                             <div class="col-sm-auto">
                                 <div class="form-check">
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-secondary btn-sm ml-auto" id="loginCancel">Cancel</button>
                             <button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</button>        
                         </div>
                     </form>
@@ -78,16 +78,15 @@
     </div>
 
     <div class="modal fade" id="reservaModal" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                 <h4 class="modal-title">Reserve a Table</h5>
-                <button type="button" class="close" data-dismiss="modal">
+                <button type="button" class="close" id="reservaClose">
                     &times;
                 </button>
                 </div>
                 <div class="modal-body">
-                
                     <form action="">
                         <div class="form-group row">
                             <label class="col-12 col-md-2 col-form-label">Number of Guests</label>
@@ -146,7 +145,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-10 offset-md-2">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-secondary" id="reservaCancel">Cancel</button>
                                 <button type="submit" class="btn btn-primary">Reserve</button>
                             </div>
                         </div>
@@ -155,7 +154,7 @@
                 </div>
             </div>
         </div>
-      </div>
+    </div>
 
     <header class="jumbotron">
         <div class="container">
@@ -230,7 +229,7 @@
                         </button>            
                     </div>
                 </div>
-             </div>
+            </div>
         </div>
 
         <div class="row row-content align-items-center">
@@ -297,13 +296,13 @@
                 <div class="col-7 col-sm-5">
                     <h5>Our Address</h5>
                     <address>
-		              121, Clear Water Bay Road<br>
-		              Clear Water Bay, Kowloon<br>
-		              HONG KONG<br>
-		              <i class="fa fa-phone fa-lg"></i> Tel.: +852 1234 5678<br>
-		              <i class="fa fa-fax fa-lg"></i> Fax: +852 8765 4321<br>
-		              <i class="fa fa-envelope fa-lg"></i> Email: <a href="mailto:confusion@food.net">confusion@food.net</a>
-		           </address>
+		                121, Clear Water Bay Road<br>
+		                Clear Water Bay, Kowloon<br>
+		                HONG KONG<br>
+		                <i class="fa fa-phone fa-lg"></i> Tel.: +852 1234 5678<br>
+		                <i class="fa fa-fax fa-lg"></i> Fax: +852 8765 4321<br>
+		                <i class="fa fa-envelope fa-lg"></i> Email: <a href="mailto:confusion@food.net">confusion@food.net</a>
+		            </address>
                 </div>
                 <div class="col-12 col-sm-4 align-self-center">
                     <div class="text-center">
@@ -315,12 +314,12 @@
                         <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope fa-lg"></i></a>
                     </div>
                 </div>
-           </div>
-           <div class="row justify-content-center">             
+            </div>
+            <div class="row justify-content-center">             
                 <div class="col-auto">
                     <p>© Copyright 2018 Ristorante Con Fusion</p>
                 </div>
-           </div>
+            </div>
         </div>
     </footer>
 
@@ -329,6 +328,7 @@
         <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script>
+            //carousel
             $(document).ready(function(){
                 $('#mycarousel').carousel({ interval: 2000 });
                 $('#carouselButton').click(function() {
@@ -339,9 +339,22 @@
                     } else {
                         $('#mycarousel').carousel('cycle');
                         $('#carouselButton').children('span').removeClass('fa-play');
-                        $('#carouselButton').children('span').addClass('fa-pa');
+                        $('#carouselButton').children('span').addClass('fa-pause');
                     }
-                    
+                });
+                 //reservation
+                $('#reservaClose').click(function() {
+                    $('#reservaModal').modal('toggle');
+                });
+                $('#reservaCancel').click(function() {
+                    $('#reservaModal').modal('hide');
+                });
+                //login
+                $('#loginClose').click(function() {
+                    $('#loginModal').modal('toggle');
+                });
+                $('#loginCancel').click(function() {
+                    $('#loginModal').modal('hide');
                 });
             });
         </script>
